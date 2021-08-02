@@ -13,5 +13,4 @@ public class Hello {
 		System.out.println("中文");
 		System.out.println("Spring");
 	}
-
 }
