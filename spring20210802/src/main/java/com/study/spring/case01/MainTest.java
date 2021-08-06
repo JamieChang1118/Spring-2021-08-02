@@ -6,9 +6,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class MainTest {
 
 	public static void main(String[] args) {
-		ApplicationContext ctxApplicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+		Author author1 = ctx.getBean(Author.class);
+		System.out.println(author1);
 		
-
+		Author author2 = (Author)ctx.getBean("author");
+		System.out.println(author2);
 	}
 
 }
