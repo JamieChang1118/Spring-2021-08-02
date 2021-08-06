@@ -7,6 +7,9 @@ public class Husband {
 	
 	public Husband() {
 	}
+	public Husband(String name) {
+		this.name = name;
+	}
 	public Husband(String name, Wife wife) {
 		this.name = name;
 		this.wife = wife;

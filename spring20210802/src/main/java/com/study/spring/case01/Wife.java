@@ -5,6 +5,9 @@ public class Wife {
 	private Husband husband;
 	
 	public Wife() {
+	}	
+	public Wife(String name) {
+		this.name = name;
 	}
 	public Wife(String name, Husband husband) {
 		this.name = name;
