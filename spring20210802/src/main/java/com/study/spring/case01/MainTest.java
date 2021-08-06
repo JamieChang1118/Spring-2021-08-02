@@ -24,7 +24,17 @@ public class MainTest {
 		
 		// Spring DI (依賴注入): author1用方法注入，author2用建構子注入，author3用p: 注入，author4用c: 注入
 		
+		Book book1 = (Book)ctx.getBean("book1");
+		System.out.println(book1);
 		
+		Book book2 = (Book)ctx.getBean("book2");
+		System.out.println(book2);
+		
+		Book book3 = (Book)ctx.getBean("book3");
+		System.out.println(book3);
+		
+		Book book4 = (Book)ctx.getBean("book4");
+		System.out.println(book4);
 	}
 
 }

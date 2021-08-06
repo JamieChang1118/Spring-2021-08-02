@@ -30,5 +30,30 @@
 	
 	<!-- c: 注入 -->
 	<bean id="author4" class="com.study.spring.case01.Author" c:sex="男" c:name="Tom" c:age="22"></bean>
-
+	
+	<bean id="book1" class="com.study.spring.case01.Book">
+		<property name="name">
+			<value>Spring</value>
+		</property>
+		<property name="price">
+			<value>500</value>
+		</property>
+		<property name="author" ref="author1">			
+		</property>
+	</bean>
+	
+	<bean id="book2" class="com.study.spring.case01.Book">
+		<constructor-arg value="Python"></constructor-arg>
+		<constructor-arg value="300"></constructor-arg>
+		<constructor-arg ref="author2"></constructor-arg>
+	</bean>
+	
+	<bean id="book3" class="com.study.spring.case01.Book" p:name="Java" p:price="350" p:author-ref="author3"></bean>
+	
+	<bean id="book4" class="com.study.spring.case01.Book" c:name="C#" c:price="400" c:author-ref="author4"></bean>
+	
+	<bean id="husband" class="com.study.spring.case01.Husband" p:name="John" p:wife-ref="wife"></bean>
+	<bean id="wife" class="com.study.spring.case01.Wife" p:name="Mary" p:husband-ref="husband"></bean>
+	
+	
 </beans>
