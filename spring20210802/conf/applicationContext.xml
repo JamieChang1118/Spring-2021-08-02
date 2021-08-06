@@ -1,8 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="author" scope="singleton" class="com.study.spring.case01.Author"></bean>
+	<bean id="author1" scope="singleton" class="com.study.spring.case01.Author">
+		<!-- 方法注入 -->
+		<property name="name">
+			<value>John</value>
+		</property>
+		<property name="sex">
+			<value>男</value>
+		</property>
+		<property name="age">
+			<value>18</value>
+		</property>
+	</bean>
+	
+	<!-- 建構子注入 -->
+	<bean id="author2" scope="singleton" class="com.study.spring.case01.Author">
+		<constructor-arg value="Mary" index="1"></constructor-arg>
+		<constructor-arg value="女" index="0"></constructor-arg>
+		<constructor-arg value="19" index="2"></constructor-arg>
+	</bean>
+	
+	<!-- p: 注入 -->
+	<bean id="author3" class="com.study.spring.case01.Author" p:name="Helen" p:sex="女" p:age="20"></bean>
+	
+	<!-- c: 注入 -->
+	<bean id="author4" class="com.study.spring.case01.Author" c:sex="男" c:name="Tom" c:age="22"></bean>
 
 </beans>
