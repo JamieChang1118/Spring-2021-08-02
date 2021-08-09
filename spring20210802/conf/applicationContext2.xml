@@ -2,7 +2,22 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+
+	<!-- 資源文件加載 -->
+	<!--  
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="user.properties"></property>		
+	</bean>
+	-->
+	
+	<!-- 使用 Context -->
+	<context:property-placeholder location="user.properties"/>
 
 	<!-- scope="singleton" 才會出現 destroy 方法，scope="prototype" 不會出現，要另外複寫 -->
 	<bean id="student1" class="com.study.spring.case02.Student" scope="singleton"
@@ -78,6 +93,39 @@
 				</entry>
 			</map>
 		</property>
+	</bean>
+	
+	<bean id="teacher2" class="com.study.spring.case02.Teacher" 
+		p:id="2" p:name="Jo" p:students-ref="students" p:subjects-ref="subjects" p:salary-ref="salary">		
+	</bean>
+	
+	<util:set id="students">
+		<ref bean="student1"/>
+		<ref bean="student3"/>
+	</util:set>
+	
+	<util:list id="subjects">
+		<value>Java</value>
+		<value>VB</value>
+	</util:list>
+	
+	<util:map id="salary">
+		<entry>
+			<key>
+				<value>base</value>
+			</key>
+			<value>60000</value>
+		</entry>
+		<entry>
+			<key>
+				<value>addition</value>
+			</key>
+			<value>20000</value>
+		</entry>
+	</util:map>
+	
+	<bean id="teacher3" class="com.study.spring.case02.Teacher"
+		p:id="${teacher.id}" p:name="${teacher.name}" p:students-ref="students" p:subjects-ref="subjects" p:salary-ref="salary">
 	</bean>
 	
 </beans>
