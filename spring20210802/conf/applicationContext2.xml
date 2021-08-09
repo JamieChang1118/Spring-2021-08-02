@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- scope="singleton" 才會出現 destroy 方法，scope="prototype" 不會出現，要另外複寫 -->
+	<bean id="student1" class="com.study.spring.case02.Student" scope="singleton"
+		p:id="1001" p:name="John" 
+		init-method="init" 
+		destroy-method="destory">
+		
+		<property name="clazzs">
+			<set>
+				<ref bean="clazz1"/>
+				<ref bean="clazz3"/>
+			</set>
+		</property>		
+	</bean>
+	
+	<bean id="student2" class="com.study.spring.case02.Student" scope="singleton"
+		p:id="1002" p:name="Mary" 
+		init-method="init" 
+		destroy-method="destory">
+		
+		<property name="clazzs">
+			<set>
+				<ref bean="clazz1"/>
+				<ref bean="clazz2"/>
+				<ref bean="clazz3"/>
+			</set>
+		</property>		
+	</bean>
+	
+	<bean id="student3" class="com.study.spring.case02.Student" scope="singleton"
+		p:id="1003" p:name="Helen" 
+		init-method="init" 
+		destroy-method="destory">
+		
+		<property name="clazzs">
+			<set>
+				<ref bean="clazz2"/>
+				<ref bean="clazz3"/>
+			</set>
+		</property>		
+	</bean>
+	
+	<bean id="clazz1" class="com.study.spring.case02.Clazz" p:id="501" p:name="Program" p:credit="3"></bean>
+	<bean id="clazz2" class="com.study.spring.case02.Clazz" p:id="502" p:name="Math" p:credit="2"></bean>
+	<bean id="clazz3" class="com.study.spring.case02.Clazz" p:id="503" p:name="English" p:credit="1"></bean>
+	
+	<bean id="teacher1" class="com.study.spring.case02.Teacher" p:id="1" p:name="Bob">
+	
+		<property name="students">
+			<set>
+				<ref bean="student1"/>
+				<ref bean="student2"/>
+				<ref bean="student3"/>
+			</set>
+		</property>
+		
+		<property name="subjects">
+			<list>
+				<value>Program</value>
+				<value>Math</value>
+				<value>English</value>
+				<value>Chinese</value>
+			</list>
+		</property>
+		
+		<property name="salary">
+			<map>
+				<entry key="base">
+					<value>50000</value>
+				</entry>
+				<entry key="addition">
+					<value>20000</value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+</beans>
