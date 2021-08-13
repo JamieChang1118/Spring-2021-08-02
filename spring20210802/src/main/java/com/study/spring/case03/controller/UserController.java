@@ -8,6 +8,7 @@ import com.study.spring.case03.service.UserService;
 public class UserController {
 	
 	//private UserService service = new UserServiceImpl();
+		
 	@Autowired
 	private UserService userService;
 		

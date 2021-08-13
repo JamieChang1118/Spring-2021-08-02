@@ -1,6 +1,7 @@
 package com.study.spring.case03.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import com.study.spring.case03.dao.UserDao;
 
@@ -9,7 +10,10 @@ import com.study.spring.case03.dao.UserDao;
 public class UserServiceImpl implements UserService{
 	
 	//private UserDao userDao = new UserDaoImpl();
+	
+	// 自動裝配的順序 byType 再進行 byName
 	@Autowired
+	@Qualifier(value="userDaoDerbyImpl")
 	private UserDao userDao;
 	
 	public UserServiceImpl() {
